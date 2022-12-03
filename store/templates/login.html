@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login Page
+
+{% endblock title %}
+{% block body %}
+    <div class="container">
+        <div class="p-4 m-4">
+            <div class="col-lg-5 mx-auto border rounded pt-2">
+                <h2 class="alert text-center">
+
+                   Login Page
+                </h2>
+                <form class="m-4" action="/login" method="post">
+                    {%if error%}
+                    <div class="alert alert-danger" role="alert">
+                        
+                        {{error}}- <a href="/signup">Sign Up</a>
+                    </div>
+                    {%endif%}
+                    
+                    {% csrf_token %}
+                    <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required value="{{values.email}}">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="text-center m-3">
+
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    {% endblock body %}

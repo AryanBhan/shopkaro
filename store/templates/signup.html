@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+    Sign Up
+
+{% endblock title %}
+{% block body %}
+    <div class="container">
+        <div class="p-4 m-4">
+            <div class="col-lg-5 mx-auto border rounded pt-2">
+                <h2 class="alert text-center">
+
+                    Create an New Account
+                </h2>
+                <form class="m-4" action="/signup" method="post">
+                    {%if error%}
+                    <div class="alert alert-danger" role="alert">
+                        
+                        {{error}}
+                    </div>
+                    {%endif%}
+                    
+                    {% csrf_token %}
+                <div class="mb-3">
+                  <label for="fname" class="form-label">First Name</label>
+                  <input required type="text" class="form-control" id="fname" name="fname" value="{{values.fname}}" aria-describedby="emailHelp" >
+                </div>
+                <div class="mb-3">
+                  <label for="lname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" value="{{values.lname}}"id="lname" name="lname" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                  <label for="phno" class="form-label">Phone Number</label>
+                  <input type="text" class="form-control" id="phno" name="phno" aria-describedby="emailHelp" required value="{{values.phno}}">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required value="{{values.email}}">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    {% endblock body %}
